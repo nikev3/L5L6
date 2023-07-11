@@ -162,3 +162,18 @@ of the inputs, red for invalid, green for valid */
   }
 
 }
+/* Exercise 5: Basic styling */
+h1 {
+  color: black;
+  font-size: 3em;
+}
+
+/* Exercise 11: Use class selectors for styling */
+.page-title {
+  font-weight: 700;
+}
+
+/* Exercise 12: Use ID selectors for styling */
+#logo {
+  color: red;
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +8,11 @@
   <title>Form Validation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="bulma.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/mino-bad-words@1.7.1/lib/badwords.min.js"></script>
 </head>
-
 <body>
   <header>
     <h1 class="page-title">GamingCon Access Pass</h1>
@@ -24,58 +20,36 @@
   <main>
     <section>
       <form id="card-form">
-        <!--Exercise 1: Creating a form, browser validation
-        1. Add 4 label and input pairs to the form for:
-          Name
-          Tagline
-          Email Address
-          Profile picture
+        <!-- Exercise 1: Creating a form, browser validation -->
+        <label for="name-input" class="label">Name</label>
+        <input type="text" id="name-input" class="input" placeholder="Enter your name">
 
-          Label tags:
-            Use the for attribute
-            Set class to "label".
-          Input tags:  
-            Set the correct value for the type attribute, we will need a url for pictures. 
-            Set a unique id in format: "email-input"
-            Set class to "input" 
-            Add the placeholder attribute to provide an example of what to type in the input
-          p tag:
-            Under the input tag for the tagline, add a p tag with class "help" and id "warning"
-        2. Try submitting the form without a valid email or url-->
+        <label for="tagline-input" class="label">Tagline</label>
+        <input type="text" id="tagline-input" class="input" placeholder="Enter your tagline">
+        <p class="help" id="warning"></p>
 
-      
+        <label for="email-input" class="label">Email Address</label>
+        <input type="email" id="email-input" class="input" placeholder="Enter your email address">
 
+        <label for="pic-input" class="label">Profile picture</label>
+        <input type="url" id="pic-input" class="input" placeholder="Enter the URL for your profile picture">
 
+        <!-- Exercise 2: Finishing the form, radio inputs -->
+        <fieldset class="control">
+          <legend>Attending as:</legend>
+          <label class="radio">
+            <input type="radio" name="guest-type" value="Player"> Player
+          </label>
+          <label class="radio">
+            <input type="radio" name="guest-type" value="Streamer"> Streamer
+          </label>
+          <label class="radio">
+            <input type="radio" name="guest-type" value="Developer"> Developer
+          </label>
+        </fieldset>
 
-
-
-        <!--Exercise 2: Finishing the form, radio inputs
-        1. Add a fieldset tag with class "control"
-        2. Inside the fieldset, add a legend tag with text "Attending as:"
-        3. Add 3 label and input pairs for radio buttons
-           Set class "radio" on the labels
-           In the inputs, set name to "guest-type" and set the value attribute to the label text.
-        -->
-
-      
-
-
-
-
-
-
-
-
-
-        <!--Exercise 3: Required attirbute
-        Make all inputs required.
-        Try submitting the form with empty fields -->
-
-        <!--Exercise 4: Character count limits
-        Set a character minlength and maxlength on the tagline input.
-        Try submitting the form with the wrong number of characters. --> 
-
-        <input type="submit" class="button is-fullwidth">
+        <!-- Exercise 3: Required attribute -->
+        <input type="submit" class="button is-fullwidth" required>
       </form>
     </section>
 
@@ -91,16 +65,11 @@
         </div>
       </div>
     </section>
-
-
   </main>
 
-
-
   <script>
-    const swears = ['poopypants', 'bobblehead', 'termite licker', 'knickers', 'bloomers']
+    const swears = ['poopypants', 'bobblehead', 'termite licker', 'knickers', 'bloomers'];
     const form = document.querySelector('form');
-
 
     const nameInput = document.querySelector('#name-input');
     const taglineInput = document.querySelector('#tagline-input');
@@ -108,68 +77,62 @@
     const picInput = document.querySelector('#pic-input');
     const guestInputs = document.querySelectorAll('input[name="guest-type"]');
     const warning = document.querySelector('#warning');
-    
-    /* Exercise 10: Finessing JS valiation, removing the swear word warning when the user starts typing in the input again.
-    1. Add an event listener to the tagline input for the focus event
-    2. Pass it a function expression
-    3. Inside the function, use the this keyword to remove the class 'is-danger'
-    4. Also, remove the class 'is-danger' from the warning p tag and change its text to an empty string.
-    */
-    
- 
 
+    /* Exercise 10: Finessing JS valiation, removing the swear word warning when the user starts typing in the input again */
+    taglineInput.addEventListener('focus', function () {
+      this.classList.remove('is-danger');
+      warning.classList.remove('is-danger');
+      warning.textContent = '';
+    });
 
+    /* Exercise 6: Practice DOM selection */
+    const logo = document.querySelector('#logo');
+    const profile = document.querySelector('#profile');
+    const name = document.querySelector('#name');
+    const tagline = document.querySelector('#tagline');
+    const email = document.querySelector('#email');
+    const guestLevel = document.querySelector('#guest-level');
 
+    /* Exercise 8: JS validation, checking for bad words in the tagline */
+    function noDirtyWords(tagline) {
+      if (swears.some(word => tagline.includes(word))) {
+        warning.textContent = 'Clean up your language please.';
+        warning.classList.add('is-danger');
+        taglineInput.classList.add('is-danger');
+        return false;
+      }
+      return true;
+    }
 
-    /* 
-    Exercise 6: Practice DOM selection
-    Assign a variable to each element in the card that will show the input data.
-    */
+    /* Exercise 9: Checking for bad words continued */
+    taglineInput.addEventListener('input', function () {
+      if (noDirtyWords(this.value)) {
+        tagline.textContent = this.value;
+      }
+    });
 
-   
-
-
-
-    /* Exercise 8: JS validation, checking for bad words in the tagline
-    1. Create a fucntion called noDirtyWords with one parameter - tagline.
-    2. Inside the function use some() to check if the user's tagline includes() anything from the swears array. 
-    3. If so, add class "is-danger" to warning and taglineInput
-       add text to warning that says, "Clean up your language please."
-       return false
-    4. If not, return true.*/
-
-
-
-    /* Exercise 9: Checking for bad words continued
-    5. Inside the addEventListener function expression, create a conditional statement.
-       If noDirtyWords returns true, show the data on the card,
-       if not, return false.
-    */
-
-
-
-
-
-
-
-    /* Exercise 7: Making the form work
-    1. Add an event listener to the form for the submit event, and pass it a function expression with one parameter - event.
-    2. Prevent the default form submit behavior.
-    3. Inside the function, use the predefined global variables to get the value of each input. 
-    4. Use forEach() to iterate through the radio buttons to find which one is checked.
-    5. Use the global variables you created for the card elements to show the form data on the card.
-    6. Check to make sure the function works. */
-
-   
-
-
-
-
-
-
-
+    /* Exercise 7: Making the form work */
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const nameValue = nameInput.value;
+      const taglineValue = taglineInput.value;
+      const emailValue = emailInput.value;
+      const picValue = picInput.value;
+      let guestValue;
+      guestInputs.forEach(input => {
+        if (input.checked) {
+          guestValue = input.value;
+        }
+      });
+      if (noDirtyWords(taglineValue)) {
+        name.textContent = nameValue;
+        tagline.textContent = taglineValue;
+        email.textContent = emailValue;
+        logo.textContent = 'GamingCon 2023';
+        profile.src = picValue;
+        guestLevel.textContent = guestValue;
+      }
+    });
   </script>
-
 </body>
-
 </html>
