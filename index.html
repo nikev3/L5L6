@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Lynn Schirmer for CFA 2023">
+  <title>Form Validation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="bulma.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mino-bad-words@1.7.1/lib/badwords.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="page-title">GamingCon Access Pass</h1>
+  </header>
+  <main>
+    <section>
+      <form id="card-form">
+        <!--Exercise 1: Creating a form, browser validation
+        1. Add 4 label and input pairs to the form for:
+          Name
+          Tagline
+          Email Address
+          Profile picture
+
+          Label tags:
+            Use the for attribute
+            Set class to "label".
+          Input tags:  
+            Set the correct value for the type attribute, we will need a url for pictures. 
+            Set a unique id in format: "email-input"
+            Set class to "input" 
+            Add the placeholder attribute to provide an example of what to type in the input
+          p tag:
+            Under the input tag for the tagline, add a p tag with class "help" and id "warning"
+        2. Try submitting the form without a valid email or url-->
+
+      
+
+
+
+
+
+        <!--Exercise 2: Finishing the form, radio inputs
+        1. Add a fieldset tag with class "control"
+        2. Inside the fieldset, add a legend tag with text "Attending as:"
+        3. Add 3 label and input pairs for radio buttons
+           Set class "radio" on the labels
+           In the inputs, set name to "guest-type" and set the value attribute to the label text.
+        -->
+
+      
+
+
+
+
+
+
+
+
+
+        <!--Exercise 3: Required attirbute
+        Make all inputs required.
+        Try submitting the form with empty fields -->
+
+        <!--Exercise 4: Character count limits
+        Set a character minlength and maxlength on the tagline input.
+        Try submitting the form with the wrong number of characters. --> 
+
+        <input type="submit" class="button is-fullwidth">
+      </form>
+    </section>
+
+    <section>
+      <div class="card-display">
+        <h2 id="logo">GamingCon 2023</h2>
+        <img id="profile" src="user.png">
+        <h1 id="name">John Doe</h1>
+        <h3 id="tagline">Game Designer</h3>
+        <p id="email">john@gamescompany.com</p>
+        <div id="guest">
+          <h2 id="guest-level">Guest</h2>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+
+
+  <script>
+    const swears = ['poopypants', 'bobblehead', 'termite licker', 'knickers', 'bloomers']
+    const form = document.querySelector('form');
+
+
+    const nameInput = document.querySelector('#name-input');
+    const taglineInput = document.querySelector('#tagline-input');
+    const emailInput = document.querySelector('#email-input');
+    const picInput = document.querySelector('#pic-input');
+    const guestInputs = document.querySelectorAll('input[name="guest-type"]');
+    const warning = document.querySelector('#warning');
+    
+    /* Exercise 10: Finessing JS valiation, removing the swear word warning when the user starts typing in the input again.
+    1. Add an event listener to the tagline input for the focus event
+    2. Pass it a function expression
+    3. Inside the function, use the this keyword to remove the class 'is-danger'
+    4. Also, remove the class 'is-danger' from the warning p tag and change its text to an empty string.
+    */
+    
+ 
+
+
+
+
+    /* 
+    Exercise 6: Practice DOM selection
+    Assign a variable to each element in the card that will show the input data.
+    */
+
+   
+
+
+
+    /* Exercise 8: JS validation, checking for bad words in the tagline
+    1. Create a fucntion called noDirtyWords with one parameter - tagline.
+    2. Inside the function use some() to check if the user's tagline includes() anything from the swears array. 
+    3. If so, add class "is-danger" to warning and taglineInput
+       add text to warning that says, "Clean up your language please."
+       return false
+    4. If not, return true.*/
+
+
+
+    /* Exercise 9: Checking for bad words continued
+    5. Inside the addEventListener function expression, create a conditional statement.
+       If noDirtyWords returns true, show the data on the card,
+       if not, return false.
+    */
+
+
+
+
+
+
+
+    /* Exercise 7: Making the form work
+    1. Add an event listener to the form for the submit event, and pass it a function expression with one parameter - event.
+    2. Prevent the default form submit behavior.
+    3. Inside the function, use the predefined global variables to get the value of each input. 
+    4. Use forEach() to iterate through the radio buttons to find which one is checked.
+    5. Use the global variables you created for the card elements to show the form data on the card.
+    6. Check to make sure the function works. */
+
+   
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
